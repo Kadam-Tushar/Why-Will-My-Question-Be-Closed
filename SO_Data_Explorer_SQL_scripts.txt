@@ -1,0 +1,18 @@
+To extract closed question with date >= June 2013 with qid and reason for closing
+
+
+
+
+select * from 
+(
+SELECT Row_Number() OVER(ORDER BY q.id) As RowID, q.id , ph.comment
+from 
+  posts q
+  join posthistory ph on (q.id = ph.postid)
+where
+  ph.PostHistoryTypeId = 10
+  and ph.comment between 101 and 105
+  and q.CreationDate >= Convert(datetime, '2013-07-01')
+) as Rowresults
+
+where RowID Between 0 AND 50000
