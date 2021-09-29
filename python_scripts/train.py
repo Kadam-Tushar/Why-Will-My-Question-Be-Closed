@@ -34,11 +34,12 @@ optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
 train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=True)
-logging.info("Number of batches: {}".format(len(train_loader)))
-
 update_interval = good_update_interval(total_iters=len(train_loader), num_desired_updates=10)
+logging.info("Number of batches: {} and update interval : {}".format(len(train_loader),update_interval))
+
 # Train Network
 for epoch in range(num_epochs):
+    running_loss =0.0 
     for batch_idx, (data, targets) in enumerate(tqdm(train_loader)):
         # Get data to cuda if possible
         data = data.to(device=device).squeeze(1)
@@ -52,8 +53,14 @@ for epoch in range(num_epochs):
         optimizer.zero_grad()
         loss.backward()
 
+        running_loss += loss.item()* data.size(0)
+        if batch_idx % update_interval == 0:
+            logger.info("[{},{}] loss: {}".format(epoch + 1,batch_idx, running_loss/(1 + update_interval*data.size(0))))
+            running_loss = 0.0 
+        
         # gradient descent update step/adam step
         optimizer.step()
+    
 
         
 
@@ -82,5 +89,5 @@ def check_accuracy(loader, model):
 
 logger.info(f"Accuracy on training set: {check_accuracy(train_loader, model)*100:2f}")
 logger.info(f"Accuracy on test set: {check_accuracy(test_loader, model)*100:.2f}")
-torch.save(model,"GRU_title_body.model")
+torch.save(model,export_path+"GRU_title_body.model")
 
