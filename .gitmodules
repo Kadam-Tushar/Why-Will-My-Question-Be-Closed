@@ -1,0 +1,3 @@
+[submodule "stackexchangeparser"]
+	path = stackexchangeparser
+	url = https://github.com/Kadam-Tushar/stackexchangeparser.git
