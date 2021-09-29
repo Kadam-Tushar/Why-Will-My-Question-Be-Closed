@@ -12,19 +12,23 @@ logging.info("Done reading dataset csv file : {}".format(dataset_path))
 tz = BertTokenizer.from_pretrained("bert-base-cased")
 def tokenize(df,max_length):
     input_ids = []
-    for sent in tqdm(df):
-        encoded = tz.encode(
+    for sent in df:
+        encoded = tz.encode_plus(
             text=sent,  # the sentence to be encoded
             add_special_tokens=True,  # Add [CLS] and [SEP]
             max_length = max_length,  # maximum length of a sentence
-            padding=False,  #  Do not Add [PAD]s for dynamic batching
+            pad_to_max_length=True,  # Add [PAD]s
+            return_attention_mask = True,  # Generate the attention mask
             truncation=True
         )
         # Get the input IDs and attention mask in tensor format
-        input_ids.append(encoded)
+        input_ids.append(encoded['input_ids'])
         
         
-    return input_ids
+    return torch.tensor(input_ids)
+        
+    
+
         
 logging.info("Replacing NaNs with empty strings")
 df.replace(np.nan, '', inplace=True)

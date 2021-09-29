@@ -38,10 +38,29 @@ import time
 import datetime
 import random
 
+import pickle
+
 # Global variables
 path_sep = os.path.sep 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
+
+
+# Hyperparameters
+input_size = 256
+hidden_size = 256
+num_layers = 2
+num_classes = 2
+sequence_length = 1700
+learning_rate = 0.005
+batch_size = 64
+num_epochs = 3
+
+
+# Set device
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
 
 
 # Set the seed value all over the place to make this reproducible.
