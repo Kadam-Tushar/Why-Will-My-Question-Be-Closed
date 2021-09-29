@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 import modules 
+import CustomeTextDataset
+
 # In[1]:
 
 
@@ -9,8 +11,8 @@ import modules
 
 # In[2]:
 
-
-df = pd.read_csv('/Users/tushar/iisc/sem3/TSE/project/Dataset/final_df.csv')
+dataset_path = '../Dataset/title_body.pt'
+df = pd.read_csv(')
 
 
 # In[3]:
@@ -62,25 +64,12 @@ torch.save(tz.vocab,'vocab.v')
 # In[6]:
 
 
-class CustomTextDataset(Dataset):
-    def __init__(self, txt, labels):
-        self.labels = labels
-        self.text = txt
-    
-    def __len__(self):
-        return len(self.labels)
-    
-    def __getitem__(self, idx):
-        label = self.labels[idx]
-        text = self.text[idx]
-#         sample = {"Text": text, "Class": label}
-        return (text,label)
 
 # define data set object
 dataset = CustomTextDataset(title_tensor,df['closed'].to_numpy())
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size
-train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size])
+train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))
 
 
 # In[7]:
