@@ -1,7 +1,7 @@
 from modules import * 
-import CustomeTextDataset
+import CustomTextDataset
 
-dataset_name = 'title_body.csv'
+dataset_name = 'fixed_title_body.csv'
 dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
 export_path = '..' + path_sep + 'Dataset' + path_sep 
 df = pd.read_csv(dataset_path)
@@ -38,8 +38,8 @@ title_body_list = tokenize(df['title_body'],title_body_max_length)
 
 logging.info("Done tokenizing dataset : {}".format(dataset_path))
 
-torch.save(tz.vocab,export_path + 'vocab_1_no_padd.v')
-torch.save(title_body_list,export_path + 'title_body_no_pad.list')
+torch.save(tz.vocab,export_path + 'vocab.v')
+torch.save(title_body_list,export_path + 'title_body.pt')
 
 logging.info("Done saving vocab and dataset tensors")
 

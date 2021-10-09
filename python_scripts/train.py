@@ -36,7 +36,9 @@ train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=
 test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=True)
 update_interval = good_update_interval(total_iters=len(train_loader), num_desired_updates=10)
 logging.info("Number of batches: {} and update interval : {}".format(len(train_loader),update_interval))
-
+eps =torch.ones(batch_size,num_classes)* (1e-8) 
+eps = eps.to(device)
+       
 # Train Network
 for epoch in range(num_epochs):
     running_loss =0.0 
@@ -47,6 +49,8 @@ for epoch in range(num_epochs):
 
         # forward
         scores = model(data)
+        scores += eps
+        #print(scores.size())
         loss = criterion(scores, targets)
 
         # backward
@@ -54,6 +58,7 @@ for epoch in range(num_epochs):
         loss.backward()
 
         running_loss += loss.item()* data.size(0)
+        print(loss.item())
         if batch_idx % update_interval == 0:
             logger.info("[{},{}] loss: {}".format(epoch + 1,batch_idx, running_loss/(1 + update_interval*data.size(0))))
             running_loss = 0.0 
