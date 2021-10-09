@@ -43,7 +43,7 @@ def predictions(loader,model):
     preds = torch.empty((0), dtype=torch.int32, device = device)
     target = torch.empty((0), dtype=torch.int32, device = device)
     with torch.no_grad():
-        for x, y in loader:
+        for x, y in tqdm(loader):
             x = x.to(device=device).squeeze(1)
             y = y.to(device=device)
 
@@ -67,7 +67,7 @@ def check_accuracy(loader, model):
     model.eval()
 
     with torch.no_grad():
-        for x, y in loader:
+        for x, y in tqdm(loader):
             x = x.to(device=device).squeeze(1)
             y = y.to(device=device)
 
