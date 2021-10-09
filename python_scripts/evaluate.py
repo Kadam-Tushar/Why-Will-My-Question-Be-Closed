@@ -2,10 +2,11 @@ from modules import *
 from CustomTextDataset import *
 from models.GRU import *
 import modules
-from torchmetrics import Accuracy
 
 
-dataset_name = 'title_body.csv'
+
+
+dataset_name = 'fixed_title_body.csv'
 dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
 export_path = '..' + path_sep + 'Dataset' + path_sep 
 model_path = "../trained_models/"
@@ -50,7 +51,7 @@ def predictions(loader,model):
             scores = model(x)
             _, predictions = scores.max(1)
             preds = torch.cat((preds,predictions),0)
-            target = torch.cat((target,predictions),0)
+            target = torch.cat((target,y),0)
 
     # Toggle model back to train
     model.train()
@@ -81,8 +82,14 @@ def check_accuracy(loader, model):
     return num_correct / num_samples
 
 preds,target = predictions(test_loader,model)
-accuracy = Accuracy()
-logger.info(f"Accuracy on test set: {accuracy(preds, target)*100:2f}")
-logger.info(f"Accuracy on training set: {check_accuracy(train_loader, model)*100:2f}")
-logger.info(f"Accuracy on test set: {check_accuracy(test_loader, model)*100:.2f}")
+
+torch.save(preds,export_path + "preds.pt")
+torch.save(target,export_path + "target.pt")
+
+logging.info("Saved predictions and targets")
+
+
+
+
+
 
