@@ -52,7 +52,7 @@ hidden_size = 256
 num_layers = 2
 num_classes = 2
 sequence_length = 1700
-learning_rate = 0.005
+learning_rate = 0.001
 batch_size = 64
 num_epochs = 3
 
