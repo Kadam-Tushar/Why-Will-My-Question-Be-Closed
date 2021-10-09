@@ -40,17 +40,20 @@ import random
 
 import pickle
 
+
+
+
 # Global variables
 path_sep = os.path.sep 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
-
+col = "comment"
 
 # Hyperparameters
 input_size = 256
 hidden_size = 256
 num_layers = 2
-num_classes = 2
+num_classes = 5
 sequence_length = 1700
 learning_rate = 0.001
 batch_size = 64
@@ -69,6 +72,19 @@ random.seed(seed_val)
 np.random.seed(seed_val)
 torch.manual_seed(seed_val)
 torch.cuda.manual_seed_all(seed_val)
+
+
+#model params
+model_path = ".." + path_sep + 'trained_models' + path_sep
+model_name = "GRU_UNI_Multi.model"
+
+
+#paths 
+dataset_name = 'fixed_title_body.csv'
+dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
+export_path = '..' + path_sep + 'Dataset' + path_sep 
+title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
+
 
 
 # Global functions 

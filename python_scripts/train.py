@@ -69,4 +69,4 @@ for epoch in range(num_epochs):
 
         
 torch.save(model,model_path+model_name)
-logging.info("model saved!: ",model_name)
+logging.info("model saved!: {}".format(model_name))

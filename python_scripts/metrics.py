@@ -9,8 +9,8 @@ from torchmetrics import Recall
 
 export_path = '..' + path_sep + 'Dataset' + path_sep 
 
-preds = torch.load(export_path+"preds.pt")
-target = torch.load(export_path+"target.pt")
+preds = torch.load(export_path+"multi_preds.pt")
+target = torch.load(export_path+"multi_target.pt")
 
 accuracy = Accuracy().to(device)
 precison_macro = Precision(average = 'macro',num_classes = num_classes).to(device)
