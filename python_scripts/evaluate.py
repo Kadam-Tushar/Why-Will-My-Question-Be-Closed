@@ -4,14 +4,6 @@ from models.GRU import *
 import modules
 
 
-
-
-dataset_name = 'fixed_title_body.csv'
-dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
-export_path = '..' + path_sep + 'Dataset' + path_sep 
-model_path = "../trained_models/"
-model_name  = "GRU_UNI_Multi.model"
-
 title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
 df = pd.read_csv(dataset_path)
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
@@ -25,7 +17,7 @@ logging.info("sequnce length:{}".format(title_body.size(1)))
 
 
 # define data set object
-dataset = CustomTextDataset(title_body,df['comment'].to_numpy())
+dataset = CustomTextDataset(title_body,df[col].to_numpy())
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size
 train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))

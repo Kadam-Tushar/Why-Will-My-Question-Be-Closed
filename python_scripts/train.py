@@ -23,7 +23,7 @@ logging.info("sequnce length:{}".format(title_body.size(1)))
 
 
 # define data set object
-dataset = CustomTextDataset(title_body,df['comment'].to_numpy())
+dataset = CustomTextDataset(title_body,df[col].to_numpy())
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size
 train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))
