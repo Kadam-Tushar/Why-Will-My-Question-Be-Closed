@@ -2,6 +2,10 @@ from modules import *
 from CustomTextDataset import *
 from models.GRU import *
 import modules
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 
 title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
 df = pd.read_csv(dataset_path)
@@ -26,7 +30,7 @@ test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=Tr
 
 model = torch.load(model_path+model_name,map_location=device)
 
-logging.info("Done loading model")
+logging.info("Done loading model: {}".format(model_name))
 
 def class_embedding(model,x):
     x = model.emb(x)
@@ -54,13 +58,52 @@ def predictions(loader,model):
     model.train()
     return preds,target
 
-preds,target = predictions(test_loader,model)
+def low_emb():
+    preds,target = predictions(test_loader,model)
+    torch.save(preds,export_path + "class_emb.pt")
+    torch.save(target,export_path + "class_emb_target.pt")
+    logging.info("Saved class emb and their targets")
+
+def model_outputs(loader, model):
+    
+
+    # Set model to eval
+    model.eval()
+    preds = torch.empty((0), dtype=torch.int32, device = device)
+    target = torch.empty((0), dtype=torch.int32, device = device)
+
+    with torch.no_grad():
+        for x, y in tqdm(loader):
+            x = x.to(device=device).squeeze(1)
+            y = y.to(device=device)
+
+            scores = model(x)
+            _, out = scores.max(1)
+            
+
+            preds = torch.cat((preds,out),0)
+            target = torch.cat((target,y),0)
+           
+
+    # Toggle model back to train
+    model.train()
+    return preds,target
 
 
-torch.save(preds,export_path + "class_emb.pt")
-torch.save(target,export_path + "class_emb_target.pt")
 
-logging.info("Saved class emb and their targets")
+
+def cf_mat():
+    preds,target = model_outputs(test_loader,model)
+    #Get the confusion matrix
+    cf_matrix = confusion_matrix(target,preds)
+    labels  = ['Open', 'Off-topic','Unclear','Broad','Opinion']
+    sns.heatmap(cf_matrix/np.sum(cf_matrix), xticklabels=labels, yticklabels=labels, fmt='.2%',  annot=True).set_title('Confusion Matrix ')
+    
+    plt.show()
+
+
+cf_mat()
+
 
 
 

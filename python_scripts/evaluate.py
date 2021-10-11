@@ -28,7 +28,7 @@ test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=Tr
 
 model = torch.load(model_path+model_name,map_location=device)
 
-logging.info("Done loading model")
+logging.info("Done loading model: {}",model_name)
 
 def predictions(loader,model):
     # Set model to eval
