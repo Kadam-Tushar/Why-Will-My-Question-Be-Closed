@@ -3,11 +3,6 @@ from CustomTextDataset import *
 from models.GRU import *
 import modules
 
-dataset_name = 'fixed_title_body.csv'
-dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
-export_path = '..' + path_sep + 'Dataset' + path_sep 
-model_path = ".." + path_sep + 'trained_models' + path_sep
-model_name = "GRU_UNI_Multi.model"
 title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
 df = pd.read_csv(dataset_path)
 

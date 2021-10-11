@@ -4,8 +4,6 @@ import torch
 import csv
 
 import re
-import nltk
-import spacy
 import string
 import re
 
@@ -13,8 +11,7 @@ from bs4 import BeautifulSoup
 import contractions
 import re
 import unicodedata
-from nltk.stem import PorterStemmer
-from nltk.corpus import stopwords
+
 from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import Vocab
 from transformers import BertTokenizer
@@ -39,9 +36,6 @@ import datetime
 import random
 
 import pickle
-
-
-
 
 # Global variables
 path_sep = os.path.sep 
@@ -79,8 +73,6 @@ torch.cuda.manual_seed_all(seed_val)
 
 #model params
 model_path = ".." + path_sep + 'trained_models' + path_sep
-
-
 
 #paths 
 dataset_name = 'fixed_title_body.csv'
