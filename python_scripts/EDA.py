@@ -1,30 +1,7 @@
-import pandas as pd 
-import numpy as np
-import pandas as pd 
-import numpy as np
-import torch
-import csv
-import numpy as np
-import pandas as pd
-import re
-import nltk
-import spacy
-import string
-import re
-from bs4 import BeautifulSoup
-import contractions
-import re
-import unicodedata
-from nltk.stem import PorterStemmer
-from nltk.corpus import stopwords
-from torchtext.data.utils import get_tokenizer
-from torchtext.vocab import Vocab
-from transformers import BertTokenizer
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import Dataset, DataLoader
-from tqdm import tqdm  # For a nice progress bar!
-from torch.utils.data import Dataset, DataLoader
+from typing import final
+from modules import * 
+from imblearn.under_sampling import RandomUnderSampler
+
 
 from os import listdir
 from os.path import isfile, join
@@ -95,26 +72,44 @@ closed_questions = merged_closed_questions[open_questions.columns]
 
 final_df = pd.concat([open_questions, closed_questions])
 
-print("Combined open and closed questions ")
-print("Length of final_df",len(final_df))
+rus = RandomUnderSampler(random_state=seed_val)
 
-print("Distibution of classes:")
-print(final_df['comment'].value_counts(normalize=True))
-
-
-print("Distibution of binary classes:")
-print(final_df['closed'].value_counts())
+# Re-Balancing binary classes 
+X = final_df.drop(['closed'],axis= 1)
+y = final_df['closed']
+X_resampled, y_resampled = rus.fit_resample(X, y)
+balanced_bin = pd.concat([X_resampled,y_resampled], axis = 1)
 
 
+# Re-balancing multiple classes
+X = final_df.drop(['comment'],axis= 1)
+y = final_df['comment']
+X_resampled, y_resampled = rus.fit_resample(X, y)
+balanced_multi = pd.concat([X_resampled,y_resampled], axis = 1)
+
+print("Distibution of binary classes after balancing")
+print(balanced_bin['closed'].value_counts())
+
+print("Distibution of multiple classes after balancing")
+print(balanced_multi['comment'].value_counts())
 
 
+balanced_multi['Tags'] = balanced_multi['Tags'].str.replace("<"," ")
+balanced_multi['Tags'] = balanced_multi['Tags'].str.replace("<"," ")
 
-final_df['title_body'] = final_df['Title'] + final_df['Body']
-final_df.to_csv(path + 'fixed_final_df.csv',index=False)
-print("Saved final dataset!")
-title_body_fixed = final_df[['Id','Title','Body','Tags','closed','comment','title_body']]
-title_body_fixed.to_csv(path+"fixed_title_body.csv",index= False)
-print("Saved fixed!")
+balanced_bin['Tags'] = balanced_bin['Tags'].str.replace(">"," ")
+balanced_bin['Tags'] = balanced_bin['Tags'].str.replace(">"," ")
+
+
+balanced_bin['title_body_tags'] = balanced_bin['Title'] + balanced_bin['Body'] + balanced_bin['Tags']
+balanced_multi['title_body_tags'] = balanced_multi['Title'] + balanced_multi['Body'] + balanced_multi['Tags']
+balanced_bin = balanced_bin[['Id','title_body_tags','closed','comment']]
+balanced_multi = balanced_multi[['Id','title_body_tags','closed','comment']]
+
+balanced_bin.to_csv(path + 'balanced_bin.csv',index=False)
+balanced_multi.to_csv(path + 'balanced_multi.csv',index=False)
+print("Saved final dataset! binary and multi-class")
+
 
 
 
