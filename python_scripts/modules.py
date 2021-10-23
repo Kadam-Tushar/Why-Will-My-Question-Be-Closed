@@ -48,7 +48,7 @@ input_size = 256
 hidden_size = 256
 num_layers = 2
 
-num_classes = 5
+num_classes = 2
 col = "closed" if num_classes == 2 else "comment"
 prob = "bin" if num_classes == 2 else "multi"
 model_name = "GRU_UNI_Bin.model" if num_classes == 2 else "GRU_UNI_Multi.model"
@@ -76,10 +76,10 @@ torch.cuda.manual_seed_all(seed_val)
 model_path = ".." + path_sep + 'trained_models' + path_sep
 
 #paths 
-dataset_name = 'fixed_title_body.csv'
+dataset_name = 'balanced_'+prob +'.csv'
 dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
 export_path = '..' + path_sep + 'Dataset' + path_sep 
-title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
+title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob + "_title_body_tags.pt"
 
 
 

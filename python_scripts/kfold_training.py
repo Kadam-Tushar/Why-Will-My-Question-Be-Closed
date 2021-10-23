@@ -5,24 +5,36 @@ import modules
 from sklearn.model_selection import StratifiedKFold
 
 
+
+title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob+ "_title_body_tags.pt"
 df = pd.read_csv(dataset_path)
 
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
 
-title_body = torch.load(title_body_list_path)
-logging.info("Done reading list of title_body file : {}".format(title_body_list_path))
+title_body_tags = torch.load(title_body_tags_list_path)
+logging.info("Done reading list of title_body_tags file : {}".format(title_body_tags_list_path))
 
-vocab = torch.load(export_path+"vocab.v")
-logging.info("Done reading list of vocab file : {}".format(export_path + "vocab.v"))
-logging.info("sequnce length:{}".format(title_body.size(1)))
+vocab = torch.load(export_path+prob+"_vocab.v")
+logging.info("Done reading list of vocab file : {}".format(export_path + prob+"_vocab.v"))
+logging.info("sequnce length:{}".format(title_body_tags.size(1)))
+
+
+
+# define data set object
+dataset = CustomTextDataset(title_body_tags,df[col].to_numpy())
+train_size = int(0.8 * len(dataset))
+test_size = len(dataset) - train_size
+train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))
+modules.sequence_length = title_body_tags.size(1)
+
 
 # K fold 
-skf = StratifiedKFold(n_splits=10,shuffle = True, random_state = seed_val)
+skf = StratifiedKFold(n_splits=30,shuffle = True, random_state = seed_val)
 fold = 0 
-for train_index, test_index in skf.split(title_body,df[col]):
+for train_index, test_index in skf.split(title_body_tags,df[col]):
     
-    train_dataset =  CustomTextDataset(title_body[train_index],df.loc[train_index][col].to_numpy())
-    test_dataset =  CustomTextDataset(title_body[test_index],df.loc[test_index][col].to_numpy())
+    train_dataset =  CustomTextDataset(title_body_tags[train_index],df.loc[train_index][col].to_numpy())
+    test_dataset =  CustomTextDataset(title_body_tags[test_index],df.loc[test_index][col].to_numpy())
     train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=True)
     # Initialize network (try out just using simple RNN, or GRU, and then compare with LSTM)
