@@ -50,6 +50,7 @@ num_layers = 2
 
 num_classes = 5
 col = "closed" if num_classes == 2 else "comment"
+prob = "bin" if num_classes == 2 else "multi"
 model_name = "GRU_UNI_Bin.model" if num_classes == 2 else "GRU_UNI_Multi.model"
 sequence_length = 1700
 learning_rate = 0.001
