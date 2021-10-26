@@ -4,17 +4,17 @@ from models.GRU import *
 import modules
 from sklearn.model_selection import StratifiedKFold
 
-
-title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
+title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob+ "_title_body_tags.pt"
 df = pd.read_csv(dataset_path)
+
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
 
-title_body = torch.load(title_body_list_path)
-logging.info("Done reading list of title_body file : {}".format(title_body_list_path))
+title_body_tags = torch.load(title_body_tags_list_path)
+logging.info("Done reading list of title_body_tags file : {}".format(title_body_tags_list_path))
 
-vocab = torch.load(export_path+"vocab.v")
-logging.info("Done reading list of vocab file : {}".format(export_path + "vocab.v"))
-logging.info("sequnce length:{}".format(title_body.size(1)))
+vocab = torch.load(export_path+prob+"_vocab.v")
+logging.info("Done reading list of vocab file : {}".format(export_path + prob+"_vocab.v"))
+logging.info("sequnce length:{}".format(title_body_tags.size(1)))
 
 
 def predictions(loader,model):
@@ -37,12 +37,12 @@ def predictions(loader,model):
     return preds,target
 
 # K fold 
-skf = StratifiedKFold(n_splits=3,shuffle = True, random_state = seed_val)
+skf = StratifiedKFold(n_splits=30,shuffle = True, random_state = seed_val)
 fold = 0 
-for train_index, test_index in skf.split(title_body,df[col]):
+for train_index, test_index in skf.split(title_body_tags,df[col]):
     
-    train_dataset =  CustomTextDataset(title_body[train_index],df.loc[train_index][col].to_numpy())
-    test_dataset =  CustomTextDataset(title_body[test_index],df.loc[test_index][col].to_numpy())
+    train_dataset =  CustomTextDataset(title_body_tags[train_index],df.loc[train_index][col].to_numpy())
+    test_dataset =  CustomTextDataset(title_body_tags[test_index],df.loc[test_index][col].to_numpy())
     train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=True)
     model_path = ".." + path_sep + 'trained_models' + path_sep + 'kfold' + path_sep

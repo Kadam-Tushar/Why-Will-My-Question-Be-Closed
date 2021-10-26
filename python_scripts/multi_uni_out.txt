@@ -1,0 +1,336 @@
+2021-10-26 21:54:44,311 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_0.model
+2021-10-26 21:54:44,311 - root - INFO - test metrics
+2021-10-26 21:54:48,709 - root - INFO - Accuracy : 43.998894
+2021-10-26 21:54:48,712 - root - INFO - Precision macro : 45.918667
+2021-10-26 21:54:48,715 - root - INFO - Precision micro : 43.998894
+2021-10-26 21:54:48,718 - root - INFO - Recall macro : 43.999260
+2021-10-26 21:54:48,721 - root - INFO - Recall micro : 43.998894
+2021-10-26 21:54:48,725 - root - INFO - f1 micro : 43.998894
+2021-10-26 21:54:48,728 - root - INFO - f1 macro : 43.545151
+2021-10-26 21:54:48,750 - root - INFO - 
+
+2021-10-26 21:54:48,750 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_1.model
+2021-10-26 21:54:48,750 - root - INFO - test metrics
+2021-10-26 21:54:48,762 - root - INFO - Accuracy : 44.496681
+2021-10-26 21:54:48,765 - root - INFO - Precision macro : 46.366734
+2021-10-26 21:54:48,768 - root - INFO - Precision micro : 44.496681
+2021-10-26 21:54:48,771 - root - INFO - Recall macro : 44.501274
+2021-10-26 21:54:48,774 - root - INFO - Recall micro : 44.496681
+2021-10-26 21:54:48,778 - root - INFO - f1 micro : 44.496681
+2021-10-26 21:54:48,782 - root - INFO - f1 macro : 44.583588
+2021-10-26 21:54:48,803 - root - INFO - 
+
+2021-10-26 21:54:48,803 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_2.model
+2021-10-26 21:54:48,804 - root - INFO - test metrics
+2021-10-26 21:54:48,815 - root - INFO - Accuracy : 30.890486
+2021-10-26 21:54:48,818 - root - INFO - Precision macro : 48.031029
+2021-10-26 21:54:48,821 - root - INFO - Precision micro : 30.890486
+2021-10-26 21:54:48,824 - root - INFO - Recall macro : 30.889404
+2021-10-26 21:54:48,827 - root - INFO - Recall micro : 30.890486
+2021-10-26 21:54:48,831 - root - INFO - f1 micro : 30.890486
+2021-10-26 21:54:48,835 - root - INFO - f1 macro : 26.809212
+2021-10-26 21:54:48,856 - root - INFO - 
+
+2021-10-26 21:54:48,856 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_3.model
+2021-10-26 21:54:48,857 - root - INFO - test metrics
+2021-10-26 21:54:48,868 - root - INFO - Accuracy : 40.735619
+2021-10-26 21:54:48,872 - root - INFO - Precision macro : 48.575073
+2021-10-26 21:54:48,875 - root - INFO - Precision micro : 40.735619
+2021-10-26 21:54:48,878 - root - INFO - Recall macro : 40.733707
+2021-10-26 21:54:48,881 - root - INFO - Recall micro : 40.735619
+2021-10-26 21:54:48,884 - root - INFO - f1 micro : 40.735619
+2021-10-26 21:54:48,888 - root - INFO - f1 macro : 40.620632
+2021-10-26 21:54:48,910 - root - INFO - 
+
+2021-10-26 21:54:48,910 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_4.model
+2021-10-26 21:54:48,910 - root - INFO - test metrics
+2021-10-26 21:54:48,921 - root - INFO - Accuracy : 43.528763
+2021-10-26 21:54:48,925 - root - INFO - Precision macro : 47.224468
+2021-10-26 21:54:48,927 - root - INFO - Precision micro : 43.528763
+2021-10-26 21:54:48,931 - root - INFO - Recall macro : 43.522121
+2021-10-26 21:54:48,933 - root - INFO - Recall micro : 43.528763
+2021-10-26 21:54:48,937 - root - INFO - f1 micro : 43.528763
+2021-10-26 21:54:48,941 - root - INFO - f1 macro : 43.169159
+2021-10-26 21:54:48,962 - root - INFO - 
+
+2021-10-26 21:54:48,963 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_5.model
+2021-10-26 21:54:48,963 - root - INFO - test metrics
+2021-10-26 21:54:48,974 - root - INFO - Accuracy : 38.921162
+2021-10-26 21:54:48,977 - root - INFO - Precision macro : 43.799412
+2021-10-26 21:54:48,980 - root - INFO - Precision micro : 38.921162
+2021-10-26 21:54:48,983 - root - INFO - Recall macro : 38.921165
+2021-10-26 21:54:48,986 - root - INFO - Recall micro : 38.921162
+2021-10-26 21:54:48,990 - root - INFO - f1 micro : 38.921158
+2021-10-26 21:54:48,993 - root - INFO - f1 macro : 36.238964
+2021-10-26 21:54:49,015 - root - INFO - 
+
+2021-10-26 21:54:49,015 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_6.model
+2021-10-26 21:54:49,015 - root - INFO - test metrics
+2021-10-26 21:54:49,027 - root - INFO - Accuracy : 36.846474
+2021-10-26 21:54:49,031 - root - INFO - Precision macro : 41.382996
+2021-10-26 21:54:49,033 - root - INFO - Precision micro : 36.846474
+2021-10-26 21:54:49,037 - root - INFO - Recall macro : 36.846478
+2021-10-26 21:54:49,039 - root - INFO - Recall micro : 36.846474
+2021-10-26 21:54:49,043 - root - INFO - f1 micro : 36.846474
+2021-10-26 21:54:49,047 - root - INFO - f1 macro : 33.989601
+2021-10-26 21:54:49,069 - root - INFO - 
+
+2021-10-26 21:54:49,069 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_7.model
+2021-10-26 21:54:49,069 - root - INFO - test metrics
+2021-10-26 21:54:49,080 - root - INFO - Accuracy : 43.208851
+2021-10-26 21:54:49,083 - root - INFO - Precision macro : 44.719078
+2021-10-26 21:54:49,086 - root - INFO - Precision micro : 43.208851
+2021-10-26 21:54:49,090 - root - INFO - Recall macro : 43.208855
+2021-10-26 21:54:49,092 - root - INFO - Recall micro : 43.208851
+2021-10-26 21:54:49,096 - root - INFO - f1 micro : 43.208851
+2021-10-26 21:54:49,100 - root - INFO - f1 macro : 42.620014
+2021-10-26 21:54:49,122 - root - INFO - 
+
+2021-10-26 21:54:49,122 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_8.model
+2021-10-26 21:54:49,122 - root - INFO - test metrics
+2021-10-26 21:54:49,133 - root - INFO - Accuracy : 44.204704
+2021-10-26 21:54:49,136 - root - INFO - Precision macro : 42.227699
+2021-10-26 21:54:49,139 - root - INFO - Precision micro : 44.204704
+2021-10-26 21:54:49,143 - root - INFO - Recall macro : 44.204704
+2021-10-26 21:54:49,145 - root - INFO - Recall micro : 44.204704
+2021-10-26 21:54:49,149 - root - INFO - f1 micro : 44.204704
+2021-10-26 21:54:49,153 - root - INFO - f1 macro : 41.438667
+2021-10-26 21:54:49,174 - root - INFO - 
+
+2021-10-26 21:54:49,175 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_9.model
+2021-10-26 21:54:49,175 - root - INFO - test metrics
+2021-10-26 21:54:49,186 - root - INFO - Accuracy : 42.655602
+2021-10-26 21:54:49,190 - root - INFO - Precision macro : 42.079079
+2021-10-26 21:54:49,193 - root - INFO - Precision micro : 42.655602
+2021-10-26 21:54:49,196 - root - INFO - Recall macro : 42.655605
+2021-10-26 21:54:49,199 - root - INFO - Recall micro : 42.655602
+2021-10-26 21:54:49,202 - root - INFO - f1 micro : 42.655602
+2021-10-26 21:54:49,206 - root - INFO - f1 macro : 40.410820
+2021-10-26 21:54:49,228 - root - INFO - 
+
+2021-10-26 21:54:49,228 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_10.model
+2021-10-26 21:54:49,228 - root - INFO - test metrics
+2021-10-26 21:54:49,239 - root - INFO - Accuracy : 42.932228
+2021-10-26 21:54:49,243 - root - INFO - Precision macro : 45.197086
+2021-10-26 21:54:49,246 - root - INFO - Precision micro : 42.932228
+2021-10-26 21:54:49,249 - root - INFO - Recall macro : 42.932232
+2021-10-26 21:54:49,252 - root - INFO - Recall micro : 42.932228
+2021-10-26 21:54:49,255 - root - INFO - f1 micro : 42.932228
+2021-10-26 21:54:49,259 - root - INFO - f1 macro : 42.794891
+2021-10-26 21:54:49,281 - root - INFO - 
+
+2021-10-26 21:54:49,281 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_11.model
+2021-10-26 21:54:49,281 - root - INFO - test metrics
+2021-10-26 21:54:49,292 - root - INFO - Accuracy : 40.553249
+2021-10-26 21:54:49,296 - root - INFO - Precision macro : 47.172482
+2021-10-26 21:54:49,298 - root - INFO - Precision micro : 40.553249
+2021-10-26 21:54:49,302 - root - INFO - Recall macro : 40.553253
+2021-10-26 21:54:49,304 - root - INFO - Recall micro : 40.553249
+2021-10-26 21:54:49,308 - root - INFO - f1 micro : 40.553249
+2021-10-26 21:54:49,312 - root - INFO - f1 macro : 40.390350
+2021-10-26 21:54:49,333 - root - INFO - 
+
+2021-10-26 21:54:49,334 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_12.model
+2021-10-26 21:54:49,334 - root - INFO - test metrics
+2021-10-26 21:54:49,345 - root - INFO - Accuracy : 43.568466
+2021-10-26 21:54:49,349 - root - INFO - Precision macro : 45.167450
+2021-10-26 21:54:49,352 - root - INFO - Precision micro : 43.568466
+2021-10-26 21:54:49,355 - root - INFO - Recall macro : 43.568466
+2021-10-26 21:54:49,358 - root - INFO - Recall micro : 43.568466
+2021-10-26 21:54:49,361 - root - INFO - f1 micro : 43.568466
+2021-10-26 21:54:49,365 - root - INFO - f1 macro : 40.415531
+2021-10-26 21:54:49,387 - root - INFO - 
+
+2021-10-26 21:54:49,387 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_13.model
+2021-10-26 21:54:49,387 - root - INFO - test metrics
+2021-10-26 21:54:49,399 - root - INFO - Accuracy : 42.904564
+2021-10-26 21:54:49,402 - root - INFO - Precision macro : 45.394890
+2021-10-26 21:54:49,405 - root - INFO - Precision micro : 42.904564
+2021-10-26 21:54:49,408 - root - INFO - Recall macro : 42.904568
+2021-10-26 21:54:49,411 - root - INFO - Recall micro : 42.904564
+2021-10-26 21:54:49,415 - root - INFO - f1 micro : 42.904564
+2021-10-26 21:54:49,418 - root - INFO - f1 macro : 42.117180
+2021-10-26 21:54:49,440 - root - INFO - 
+
+2021-10-26 21:54:49,440 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_14.model
+2021-10-26 21:54:49,440 - root - INFO - test metrics
+2021-10-26 21:54:49,453 - root - INFO - Accuracy : 42.766251
+2021-10-26 21:54:49,456 - root - INFO - Precision macro : 45.733185
+2021-10-26 21:54:49,459 - root - INFO - Precision micro : 42.766251
+2021-10-26 21:54:49,462 - root - INFO - Recall macro : 42.766254
+2021-10-26 21:54:49,465 - root - INFO - Recall micro : 42.766251
+2021-10-26 21:54:49,469 - root - INFO - f1 micro : 42.766251
+2021-10-26 21:54:49,472 - root - INFO - f1 macro : 42.918797
+2021-10-26 21:54:49,494 - root - INFO - 
+
+2021-10-26 21:54:49,494 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_15.model
+2021-10-26 21:54:49,494 - root - INFO - test metrics
+2021-10-26 21:54:49,506 - root - INFO - Accuracy : 42.904564
+2021-10-26 21:54:49,509 - root - INFO - Precision macro : 45.144409
+2021-10-26 21:54:49,512 - root - INFO - Precision micro : 42.904564
+2021-10-26 21:54:49,515 - root - INFO - Recall macro : 42.904568
+2021-10-26 21:54:49,518 - root - INFO - Recall micro : 42.904564
+2021-10-26 21:54:49,522 - root - INFO - f1 micro : 42.904564
+2021-10-26 21:54:49,525 - root - INFO - f1 macro : 41.251640
+2021-10-26 21:54:49,547 - root - INFO - 
+
+2021-10-26 21:54:49,547 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_16.model
+2021-10-26 21:54:49,547 - root - INFO - test metrics
+2021-10-26 21:54:49,559 - root - INFO - Accuracy : 43.762104
+2021-10-26 21:54:49,562 - root - INFO - Precision macro : 44.393898
+2021-10-26 21:54:49,565 - root - INFO - Precision micro : 43.762104
+2021-10-26 21:54:49,568 - root - INFO - Recall macro : 43.762104
+2021-10-26 21:54:49,571 - root - INFO - Recall micro : 43.762104
+2021-10-26 21:54:49,575 - root - INFO - f1 micro : 43.762104
+2021-10-26 21:54:49,578 - root - INFO - f1 macro : 42.202805
+2021-10-26 21:54:49,600 - root - INFO - 
+
+2021-10-26 21:54:49,600 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_17.model
+2021-10-26 21:54:49,600 - root - INFO - test metrics
+2021-10-26 21:54:49,684 - root - INFO - Accuracy : 27.551868
+2021-10-26 21:54:49,687 - root - INFO - Precision macro : 45.988640
+2021-10-26 21:54:49,690 - root - INFO - Precision micro : 27.551868
+2021-10-26 21:54:49,693 - root - INFO - Recall macro : 27.551868
+2021-10-26 21:54:49,696 - root - INFO - Recall micro : 27.551868
+2021-10-26 21:54:49,700 - root - INFO - f1 micro : 27.551868
+2021-10-26 21:54:49,703 - root - INFO - f1 macro : 21.466801
+2021-10-26 21:54:49,725 - root - INFO - 
+
+2021-10-26 21:54:49,725 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_18.model
+2021-10-26 21:54:49,725 - root - INFO - test metrics
+2021-10-26 21:54:49,737 - root - INFO - Accuracy : 41.438450
+2021-10-26 21:54:49,740 - root - INFO - Precision macro : 47.424271
+2021-10-26 21:54:49,743 - root - INFO - Precision micro : 41.438450
+2021-10-26 21:54:49,746 - root - INFO - Recall macro : 41.438454
+2021-10-26 21:54:49,749 - root - INFO - Recall micro : 41.438450
+2021-10-26 21:54:49,753 - root - INFO - f1 micro : 41.438450
+2021-10-26 21:54:49,756 - root - INFO - f1 macro : 41.868179
+2021-10-26 21:54:49,778 - root - INFO - 
+
+2021-10-26 21:54:49,778 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_19.model
+2021-10-26 21:54:49,778 - root - INFO - test metrics
+2021-10-26 21:54:49,790 - root - INFO - Accuracy : 39.391426
+2021-10-26 21:54:49,793 - root - INFO - Precision macro : 42.567818
+2021-10-26 21:54:49,796 - root - INFO - Precision micro : 39.391426
+2021-10-26 21:54:49,799 - root - INFO - Recall macro : 39.391430
+2021-10-26 21:54:49,802 - root - INFO - Recall micro : 39.391426
+2021-10-26 21:54:49,806 - root - INFO - f1 micro : 39.391426
+2021-10-26 21:54:49,810 - root - INFO - f1 macro : 38.497440
+2021-10-26 21:54:49,831 - root - INFO - 
+
+2021-10-26 21:54:49,832 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_20.model
+2021-10-26 21:54:49,832 - root - INFO - test metrics
+2021-10-26 21:54:49,843 - root - INFO - Accuracy : 45.006916
+2021-10-26 21:54:49,846 - root - INFO - Precision macro : 47.633507
+2021-10-26 21:54:49,849 - root - INFO - Precision micro : 45.006916
+2021-10-26 21:54:49,852 - root - INFO - Recall macro : 45.006920
+2021-10-26 21:54:49,855 - root - INFO - Recall micro : 45.006916
+2021-10-26 21:54:49,859 - root - INFO - f1 micro : 45.006916
+2021-10-26 21:54:49,863 - root - INFO - f1 macro : 43.625259
+2021-10-26 21:54:49,884 - root - INFO - 
+
+2021-10-26 21:54:49,884 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_21.model
+2021-10-26 21:54:49,885 - root - INFO - test metrics
+2021-10-26 21:54:49,896 - root - INFO - Accuracy : 37.869987
+2021-10-26 21:54:49,899 - root - INFO - Precision macro : 43.620255
+2021-10-26 21:54:49,902 - root - INFO - Precision micro : 37.869987
+2021-10-26 21:54:49,905 - root - INFO - Recall macro : 37.869991
+2021-10-26 21:54:49,908 - root - INFO - Recall micro : 37.869987
+2021-10-26 21:54:49,912 - root - INFO - f1 micro : 37.869987
+2021-10-26 21:54:49,915 - root - INFO - f1 macro : 35.521133
+2021-10-26 21:54:49,937 - root - INFO - 
+
+2021-10-26 21:54:49,937 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_22.model
+2021-10-26 21:54:49,937 - root - INFO - test metrics
+2021-10-26 21:54:49,949 - root - INFO - Accuracy : 33.222683
+2021-10-26 21:54:49,953 - root - INFO - Precision macro : 36.088516
+2021-10-26 21:54:49,955 - root - INFO - Precision micro : 33.222683
+2021-10-26 21:54:49,959 - root - INFO - Recall macro : 33.222683
+2021-10-26 21:54:49,961 - root - INFO - Recall micro : 33.222683
+2021-10-26 21:54:49,965 - root - INFO - f1 micro : 33.222683
+2021-10-26 21:54:49,969 - root - INFO - f1 macro : 26.175213
+2021-10-26 21:54:49,991 - root - INFO - 
+
+2021-10-26 21:54:49,991 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_23.model
+2021-10-26 21:54:49,991 - root - INFO - test metrics
+2021-10-26 21:54:50,002 - root - INFO - Accuracy : 32.835407
+2021-10-26 21:54:50,005 - root - INFO - Precision macro : 37.890411
+2021-10-26 21:54:50,008 - root - INFO - Precision micro : 32.835407
+2021-10-26 21:54:50,012 - root - INFO - Recall macro : 32.835411
+2021-10-26 21:54:50,014 - root - INFO - Recall micro : 32.835407
+2021-10-26 21:54:50,018 - root - INFO - f1 micro : 32.835407
+2021-10-26 21:54:50,022 - root - INFO - f1 macro : 26.402611
+2021-10-26 21:54:50,043 - root - INFO - 
+
+2021-10-26 21:54:50,044 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_24.model
+2021-10-26 21:54:50,044 - root - INFO - test metrics
+2021-10-26 21:54:50,055 - root - INFO - Accuracy : 42.627941
+2021-10-26 21:54:50,058 - root - INFO - Precision macro : 44.431675
+2021-10-26 21:54:50,061 - root - INFO - Precision micro : 42.627941
+2021-10-26 21:54:50,064 - root - INFO - Recall macro : 42.627941
+2021-10-26 21:54:50,067 - root - INFO - Recall micro : 42.627941
+2021-10-26 21:54:50,071 - root - INFO - f1 micro : 42.627941
+2021-10-26 21:54:50,075 - root - INFO - f1 macro : 41.062153
+2021-10-26 21:54:50,096 - root - INFO - 
+
+2021-10-26 21:54:50,097 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_25.model
+2021-10-26 21:54:50,097 - root - INFO - test metrics
+2021-10-26 21:54:50,108 - root - INFO - Accuracy : 36.597511
+2021-10-26 21:54:50,112 - root - INFO - Precision macro : 48.710411
+2021-10-26 21:54:50,115 - root - INFO - Precision micro : 36.597511
+2021-10-26 21:54:50,118 - root - INFO - Recall macro : 36.597515
+2021-10-26 21:54:50,121 - root - INFO - Recall micro : 36.597511
+2021-10-26 21:54:50,124 - root - INFO - f1 micro : 36.597507
+2021-10-26 21:54:50,128 - root - INFO - f1 macro : 35.249336
+2021-10-26 21:54:50,150 - root - INFO - 
+
+2021-10-26 21:54:50,150 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_26.model
+2021-10-26 21:54:50,150 - root - INFO - test metrics
+2021-10-26 21:54:50,161 - root - INFO - Accuracy : 31.839558
+2021-10-26 21:54:50,165 - root - INFO - Precision macro : 35.314983
+2021-10-26 21:54:50,168 - root - INFO - Precision micro : 31.839558
+2021-10-26 21:54:50,171 - root - INFO - Recall macro : 31.839558
+2021-10-26 21:54:50,174 - root - INFO - Recall micro : 31.839558
+2021-10-26 21:54:50,177 - root - INFO - f1 micro : 31.839558
+2021-10-26 21:54:50,181 - root - INFO - f1 macro : 26.929766
+2021-10-26 21:54:50,203 - root - INFO - 
+
+2021-10-26 21:54:50,203 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_27.model
+2021-10-26 21:54:50,203 - root - INFO - test metrics
+2021-10-26 21:54:50,215 - root - INFO - Accuracy : 38.229599
+2021-10-26 21:54:50,218 - root - INFO - Precision macro : 40.754246
+2021-10-26 21:54:50,221 - root - INFO - Precision micro : 38.229599
+2021-10-26 21:54:50,224 - root - INFO - Recall macro : 38.229603
+2021-10-26 21:54:50,227 - root - INFO - Recall micro : 38.229599
+2021-10-26 21:54:50,231 - root - INFO - f1 micro : 38.229599
+2021-10-26 21:54:50,234 - root - INFO - f1 macro : 31.953583
+2021-10-26 21:54:50,256 - root - INFO - 
+
+2021-10-26 21:54:50,256 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_28.model
+2021-10-26 21:54:50,256 - root - INFO - test metrics
+2021-10-26 21:54:50,268 - root - INFO - Accuracy : 43.845089
+2021-10-26 21:54:50,271 - root - INFO - Precision macro : 46.841724
+2021-10-26 21:54:50,274 - root - INFO - Precision micro : 43.845089
+2021-10-26 21:54:50,277 - root - INFO - Recall macro : 43.845093
+2021-10-26 21:54:50,280 - root - INFO - Recall micro : 43.845089
+2021-10-26 21:54:50,284 - root - INFO - f1 micro : 43.845089
+2021-10-26 21:54:50,287 - root - INFO - f1 macro : 42.721645
+2021-10-26 21:54:50,309 - root - INFO - 
+
+2021-10-26 21:54:50,309 - root - INFO - Generating metrics for  model : GRU_UNI_Multi_29.model
+2021-10-26 21:54:50,309 - root - INFO - test metrics
+2021-10-26 21:54:50,321 - root - INFO - Accuracy : 37.952976
+2021-10-26 21:54:50,324 - root - INFO - Precision macro : 44.581985
+2021-10-26 21:54:50,327 - root - INFO - Precision micro : 37.952976
+2021-10-26 21:54:50,330 - root - INFO - Recall macro : 37.952976
+2021-10-26 21:54:50,333 - root - INFO - Recall micro : 37.952976
+2021-10-26 21:54:50,337 - root - INFO - f1 micro : 37.952972
+2021-10-26 21:54:50,340 - root - INFO - f1 macro : 36.041039
+2021-10-26 21:54:50,362 - root - INFO - 
+
+2021-10-26 21:54:50,363 - root - INFO - acc: 39.909603118896484 
+ rec_mic: 39.909603118896484 
+ rec_mac: 39.909446716308594 
+ pre_mic: 39.909603118896484 
+  pre_mac: 44.34586715698242 
+ f1_mic: 39.909603118896484 f1_mac: 37.76770782470703

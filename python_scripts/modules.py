@@ -12,8 +12,7 @@ import contractions
 import re
 import unicodedata
 
-from torchtext.data.utils import get_tokenizer
-from torchtext.vocab import Vocab
+
 from transformers import BertTokenizer
 import torch.nn as nn
 import torch.optim as optim
@@ -48,7 +47,7 @@ input_size = 256
 hidden_size = 256
 num_layers = 2
 
-num_classes = 2
+num_classes = 5
 col = "closed" if num_classes == 2 else "comment"
 prob = "bin" if num_classes == 2 else "multi"
 model_name = "GRU_UNI_Bin.model" if num_classes == 2 else "GRU_UNI_Multi.model"

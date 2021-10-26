@@ -31,6 +31,7 @@ modules.sequence_length = title_body_tags.size(1)
 # K fold 
 skf = StratifiedKFold(n_splits=30,shuffle = True, random_state = seed_val)
 fold = 0 
+model_orig_name = model_name.replace(".model","")
 for train_index, test_index in skf.split(title_body_tags,df[col]):
     
     train_dataset =  CustomTextDataset(title_body_tags[train_index],df.loc[train_index][col].to_numpy())
@@ -41,7 +42,7 @@ for train_index, test_index in skf.split(title_body_tags,df[col]):
     model = GRU(input_size, hidden_size, num_layers, num_classes,len(vocab)).to(device)
 
     model_path = ".." + path_sep + 'trained_models' + path_sep + 'kfold' + path_sep
-    model_name = "{}_{}.model".format(model_name,fold)
+    model_name = "{}_{}.model".format(model_orig_name,fold)
 
     # Loss and optimizer
     criterion = nn.CrossEntropyLoss()
