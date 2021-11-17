@@ -1,7 +1,10 @@
 from modules import * 
 from CustomTextDataset import *
 from models.GRU import *
+from models.BERT import *
 import modules
+from transformers import BertTokenizer
+from transformers import BertTokenizer, BertModel
 
 title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
 df = pd.read_csv(dataset_path)
@@ -25,7 +28,26 @@ train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size
 modules.sequence_length = title_body.size(1)
 
 # Initialize network (try out just using simple RNN, or GRU, and then compare with LSTM)
-model = GRU(input_size, hidden_size, num_layers, num_classes,len(vocab)).to(device)
+model = 0
+if model_type == "GRU":
+    model = GRU(input_size, hidden_size, num_layers, num_classes,len(vocab)).to(device)
+
+if model_type == "BERT":
+    # Bert constants 
+    bert_model_name = 'bert-base-cased'
+    tokenizer = BertTokenizer.from_pretrained(bert_model_name)
+    init_token = tokenizer.cls_token
+    eos_token = tokenizer.sep_token
+    pad_token = tokenizer.pad_token
+    unk_token = tokenizer.unk_token
+    init_token_idx = tokenizer.cls_token_id
+    eos_token_idx = tokenizer.sep_token_id
+    pad_token_idx = tokenizer.pad_token_id
+    unk_token_idx = tokenizer.unk_token_id
+    max_input_length = tokenizer.max_model_input_sizes[bert_model_name]
+    bert = BertModel.from_pretrained(bert_model_name, output_attentions=True, output_hidden_states=True)
+    model = BERT(input_size, hidden_size, num_layers, num_classes,bert).to(device)
+
 
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
@@ -41,6 +63,8 @@ for epoch in range(num_epochs):
     running_loss = 0.0 
     for batch_idx, (data, targets) in enumerate(tqdm(train_loader)):
         # Get data to cuda if possible
+        if model_type == "BERT":
+            data = data[:,:512]
         data = data.to(device=device).squeeze(1)
         targets = targets.to(device=device)
 
@@ -60,8 +84,9 @@ for epoch in range(num_epochs):
         
         # gradient descent update step/adam step
         optimizer.step()
-    
+    prefix = "Epoch_"+str(epoch)+"_"
+    torch.save(model,model_path+prefix+model_name)
+    logging.info("model saved!: {}".format(prefix+model_name))
+
 
         
-torch.save(model,model_path+model_name)
-logging.info("model saved!: {}".format(model_name))
