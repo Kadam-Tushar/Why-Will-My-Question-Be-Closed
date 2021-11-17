@@ -39,7 +39,6 @@ title_body_tags_list = tokenize(df['title_body_tags'],title_body_tags_max_length
 
 logging.info("Done tokenizing dataset : {}".format(dataset_path))
 
-prefix = "_BERTOverfow"
 torch.save(tz.vocab,export_path + prob + prefix+ '_vocab.v')
 torch.save(title_body_tags_list,export_path + prob + prefix+'_title_body_tags.pt')
 
