@@ -1,5 +1,6 @@
 from modules import * 
 import CustomTextDataset
+from transformers import AutoTokenizer
 
 dataset_name = 'balanced_'+ prob +'.csv'
 dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
@@ -9,7 +10,7 @@ df = pd.read_csv(dataset_path)
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
 
 # Encode the sentence
-tz = BertTokenizer.from_pretrained("bert-base-cased")
+tz = BertTokenizer.from_pretrained("bert-base-cased") if model_type != "BERTOverflow" else  AutoTokenizer.from_pretrained("jeniya/BERTOverflow")
 def tokenize(df,max_length):
     input_ids = []
     for sent in tqdm(df):
@@ -33,13 +34,14 @@ def tokenize(df,max_length):
 logging.info("Replacing NaNs with empty strings")
 df.replace(np.nan, '', inplace=True)
 
-title_body_tags_max_length = 1700
+title_body_tags_max_length = 512 if "BERT" in model_type else 1700
 title_body_tags_list = tokenize(df['title_body_tags'],title_body_tags_max_length)
 
 logging.info("Done tokenizing dataset : {}".format(dataset_path))
 
-torch.save(tz.vocab,export_path + prob +'_vocab.v')
-torch.save(title_body_tags_list,export_path + prob + '_title_body_tags.pt')
+prefix = "_BERTOverfow_"
+torch.save(tz.vocab,export_path + prob + prefix+ '_vocab.v')
+torch.save(title_body_tags_list,export_path + prob + prefix+'_title_body_tags.pt')
 
 logging.info("Done saving vocab and dataset tensors")
 
