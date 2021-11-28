@@ -53,7 +53,7 @@ prob = "bin" if num_classes == 2 else "multi"
 model_type = "BERTOverflow"
 model_name = "_UNI_Bin.model" if num_classes == 2 else "_UNI_Multi.model"
 model_name = model_type + model_name
-sequence_length = 512 if model_type == "BERT" else 1700
+sequence_length = 512 if "BERT" in model_type  else 1700
 learning_rate = 0.001
 batch_size = 32
 num_epochs = 3
