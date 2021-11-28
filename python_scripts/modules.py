@@ -60,6 +60,7 @@ num_epochs = 3
 prefix = "_BERTOverflow"
 
 # Set device
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
