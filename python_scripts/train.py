@@ -3,29 +3,29 @@ from CustomTextDataset import *
 from models.GRU import *
 from models.BERT import *
 import modules
-from transformers import BertTokenizer
+from transformers import AutoModelForTokenClassification
 from transformers import BertTokenizer, BertModel
 
-title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
+title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob+ prefix+ "_title_body_tags.pt"
 df = pd.read_csv(dataset_path)
 
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
 
-title_body = torch.load(title_body_list_path)
-logging.info("Done reading list of title_body file : {}".format(title_body_list_path))
+title_body_tags = torch.load(title_body_tags_list_path)
+logging.info("Done reading list of title_body_tags file : {}".format(title_body_tags_list_path))
 
-vocab = torch.load(export_path+"vocab.v")
-logging.info("Done reading list of vocab file : {}".format(export_path + "vocab.v"))
-logging.info("sequnce length:{}".format(title_body.size(1)))
+vocab = torch.load(export_path+prob+prefix"_vocab.v")
+logging.info("Done reading list of vocab file : {}".format(export_path + prob+prefix+"_vocab.v"))
+logging.info("sequnce length:{}".format(title_body_tags.size(1)))
 
 
 
 # define data set object
-dataset = CustomTextDataset(title_body,df[col].to_numpy())
+dataset = CustomTextDataset(title_body_tags,df[col].to_numpy())
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size
 train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))
-modules.sequence_length = title_body.size(1)
+modules.sequence_length = title_body_tags.size(1)
 
 # Initialize network (try out just using simple RNN, or GRU, and then compare with LSTM)
 model = 0
@@ -48,6 +48,8 @@ if model_type == "BERT":
     bert = BertModel.from_pretrained(bert_model_name, output_attentions=True, output_hidden_states=True)
     model = BERT(input_size, hidden_size, num_layers, num_classes,bert).to(device)
 
+if model_type == "BERTOverflow":
+    model = AutoModelForTokenClassification.from_pretrained("jeniya/BERTOverflow").to(device)
 
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
