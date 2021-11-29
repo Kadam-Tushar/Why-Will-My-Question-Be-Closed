@@ -14,7 +14,7 @@ logging.info("Done reading dataset csv file : {}".format(dataset_path))
 title_body_tags = torch.load(title_body_tags_list_path)
 logging.info("Done reading list of title_body_tags file : {}".format(title_body_tags_list_path))
 
-vocab = torch.load(export_path+prob+prefix"_vocab.v")
+vocab = torch.load(export_path+prob+prefix+"_vocab.v")
 logging.info("Done reading list of vocab file : {}".format(export_path + prob+prefix+"_vocab.v"))
 logging.info("sequnce length:{}".format(title_body_tags.size(1)))
 
