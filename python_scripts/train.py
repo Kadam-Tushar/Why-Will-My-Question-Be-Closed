@@ -2,6 +2,7 @@ from modules import *
 from CustomTextDataset import *
 from models.GRU import *
 from models.BERT import *
+from model.BERTOverflow import *
 import modules
 from transformers import AutoModelForTokenClassification
 from transformers import BertTokenizer, BertModel
@@ -49,7 +50,9 @@ if model_type == "BERT":
     model = BERT(input_size, hidden_size, num_layers, num_classes,bert).to(device)
 
 if model_type == "BERTOverflow":
-    model = AutoModelForTokenClassification.from_pretrained("jeniya/BERTOverflow").to(device)
+    bert = AutoModelForTokenClassification.from_pretrained("jeniya/BERTOverflow").to(device)
+    model = BERTOverflow(input_size, hidden_size, num_layers, num_classes,bert).to(device)
+
 
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
