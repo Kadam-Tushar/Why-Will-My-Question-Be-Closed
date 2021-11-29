@@ -1,0 +1,22 @@
+
+512 Input size  - BERTOverflow_UNI_Bin
+
+2021-11-29 15:24:51,106 - root - INFO - Generating metrics for  model : BERTOverflow_UNI_Bin
+2021-11-29 15:24:51,107 - root - INFO - test metrics
+2021-11-29 15:24:55,600 - root - INFO - Accuracy : 69.324760
+2021-11-29 15:24:55,635 - root - INFO - Precision macro : 69.353111
+2021-11-29 15:24:55,639 - root - INFO - Precision micro : 69.324760
+2021-11-29 15:24:55,644 - root - INFO - Recall macro : 69.328644
+2021-11-29 15:24:55,648 - root - INFO - Recall micro : 69.324760
+2021-11-29 15:24:55,661 - root - INFO - f1 micro : 69.324760
+2021-11-29 15:24:55,667 - root - INFO - f1 macro : 69.316162
+2021-11-29 15:24:55,693 - root - INFO - 
+
+acc: 69.32476043701172 
+rec_mic: 69.32476043701172 
+rec_mac: 69.32864379882812 
+pre_mic: 69.32476043701172 
+pre_mac: 69.35311126708984 
+f1_mic: 69.32476043701172 
+f1_mac: 69.316162109375
+
