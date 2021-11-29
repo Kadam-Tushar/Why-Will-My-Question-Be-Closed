@@ -17,7 +17,7 @@ class BERT(nn.Module):
     def forward(self, x):
         # Set initial hidden and cell states
         with torch.no_grad():
-            x = self.bert(x,output_hidden_states=True)[1][-1]
+            x = self.bert(x)[0]
          
         h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)
 
