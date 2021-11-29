@@ -7,8 +7,10 @@ from torchmetrics import Precision
 from torchmetrics import F1
 from torchmetrics import Recall
 
-export_path = '..' + path_sep + 'Dataset' + path_sep + "kfold" + path_sep 
-kfold = 30
+kfold = 1
+export_path = '..' + path_sep + 'Dataset' + path_sep 
+export_path = (export_path + "kfold" + path_sep) if kfold > 1 else export_path
+
 
 rec = [0,0]
 acc = 0
@@ -44,8 +46,18 @@ def print_metrics(pred_full_path,target_full_path):
     f1[1]+= f1_macro(preds, target)*100
     acc +=  accuracy(preds, target)*100
 
-for fold in range(kfold):
-    m_name = "{}_{}.model".format(model_name.replace(".model",""),fold)
+if kfold > 1 :
+    for fold in range(kfold):
+        m_name = "{}_{}.model".format(model_name.replace(".model",""),fold)
+        logging.info("Generating metrics for  model : {}".format(m_name))
+        for s in ['test']:
+            preds_path = s + "_" + m_name + "_" + "preds.pt"
+            target_path = s + "_" + m_name + "_" + "target.pt"
+            logging.info(s+" metrics")
+            print_metrics(export_path + preds_path, export_path + target_path)
+            logging.info("\n")
+else:
+    m_name = model_name.replace(".model","")
     logging.info("Generating metrics for  model : {}".format(m_name))
     for s in ['test']:
         preds_path = s + "_" + m_name + "_" + "preds.pt"
@@ -53,6 +65,7 @@ for fold in range(kfold):
         logging.info(s+" metrics")
         print_metrics(export_path + preds_path, export_path + target_path)
         logging.info("\n")
+
 
 
 logging.info("acc: {} \n rec_mic: {} \n rec_mac: {} \n pre_mic: {} \n  pre_mac: {} \n f1_mic: {} f1_mac: {}"
