@@ -4,9 +4,9 @@ import torch.nn as nn
 
 #  Recurrent neural network (many-to-one)
 
-class BERT(nn.Module):
+class BERTOverflow(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers, num_classes,bert):
-        super(BERT, self).__init__()
+        super(BERTOverflow, self).__init__()
         self.bert = bert
         self.hidden_size = hidden_size
         self.num_layers = num_layers
