@@ -2,22 +2,22 @@ from modules import *
 from CustomTextDataset import *
 from models.GRU import *
 import modules
+from sklearn.model_selection import StratifiedKFold
 
-
-title_body_list_path = '..' + path_sep + 'Dataset' + path_sep + "title_body.pt"
+title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob+ prefix+"_title_body_tags.pt"
 df = pd.read_csv(dataset_path)
+
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
 
-title_body = torch.load(title_body_list_path)
-logging.info("Done reading list of title_body file : {}".format(title_body_list_path))
+title_body_tags = torch.load(title_body_tags_list_path)
+logging.info("Done reading list of title_body_tags file : {}".format(title_body_tags_list_path))
 
-vocab = torch.load(export_path+"vocab.v")
-logging.info("Done reading list of vocab file : {}".format(export_path + "vocab.v"))
-logging.info("sequnce length:{}".format(title_body.size(1)))
-
+vocab = torch.load(export_path+prob+prefix+"_vocab.v")
+logging.info("Done reading list of vocab file : {}".format(export_path + prob+prefix+"_vocab.v"))
+logging.info("sequnce length:{}".format(title_body_tags.size(1)))
 
 # define data set object
-dataset = CustomTextDataset(title_body,df[col].to_numpy())
+dataset = CustomTextDataset(title_body_tags,df[col].to_numpy())
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size
 train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))
@@ -28,7 +28,7 @@ test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=Tr
 
 model = torch.load(model_path+model_name,map_location=device)
 
-logging.info("Done loading model: {}",model_name)
+logging.info("Done loading model: {}".format(model_name))
 
 def predictions(loader,model):
     # Set model to eval
@@ -73,10 +73,14 @@ def check_accuracy(loader, model):
     model.train()
     return num_correct / num_samples
 
-preds,target = predictions(test_loader,model)
-
-torch.save(preds,export_path + "multi_preds.pt")
-torch.save(target,export_path + "multi_target.pt")
+#train_preds,train_target = predictions(train_loader,model)
+test_preds,test_target = predictions(test_loader,model)
+m_name = model_name.replace(".model","")
+#torch.save(train_preds,export_path + path_sep + "train_"+ m_name +"_preds.pt")
+#torch.save(train_target,export_path + path_sep + "train_"+m_name+"_target.pt")
+torch.save(test_preds,export_path + path_sep + "test_"+m_name+"_preds.pt")
+torch.save(test_target,export_path + path_sep +  "test_"+m_name+"_target.pt")
+logging.info("model: {}  saved train / test preds,targets ".format(m_name))
 
 logging.info("Saved predictions and targets")
 
