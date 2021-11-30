@@ -2,7 +2,7 @@ from modules import *
 from CustomTextDataset import *
 from models.GRU import *
 from models.BERT import *
-from model.BERTOverflow import *
+from models.BERTOverflow import *
 import modules
 from transformers import AutoModelForTokenClassification
 from transformers import BertTokenizer, BertModel
