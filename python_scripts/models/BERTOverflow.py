@@ -10,14 +10,20 @@ class BERTOverflow(nn.Module):
         self.bert = bert
         self.hidden_size = hidden_size
         self.num_layers = num_layers
-        self.embedding_size = bert.config.to_dict()['hidden_size']
+        self.embedding_size = 2 * bert.config.to_dict()['hidden_size']
         self.gru = nn.GRU(self.embedding_size, hidden_size, num_layers, batch_first=True)
         self.fc = nn.Linear(hidden_size * sequence_length, num_classes)
 
     def forward(self, x):
         # Set initial hidden and cell states
         with torch.no_grad():
-            x = self.bert(x,output_hidden_states=True)[1][-1]
+            tok = self.bert(x[:,:512],output_hidden_states=True)[1][-2]
+            tok_pos = self.bert(x[:,512:],output_hidden_states=True)[1][-2]
+            x = torch.cat((tok,tok_pos),2)
+            
+            x = x.to(device)
+
+
          
         h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)
 

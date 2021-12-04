@@ -47,7 +47,7 @@ input_size = 256
 hidden_size = 256
 num_layers = 1
 
-num_classes = 2
+num_classes = 5
 col = "closed" if num_classes == 2 else "comment"
 prob = "bin" if num_classes == 2 else "multi"
 model_type = "BERTOverflow"
@@ -55,9 +55,9 @@ model_name = "_UNI_Bin.model" if num_classes == 2 else "_UNI_Multi.model"
 model_name = model_type + model_name
 sequence_length = 512 if "BERT" in model_type  else 1700
 learning_rate = 0.001
-batch_size = 32
-num_epochs = 3
-prefix = "_BERTOverflow"
+batch_size = 64
+num_epochs = 15
+prefix = "_POS_BERTOverflow"
 
 # Set device
 

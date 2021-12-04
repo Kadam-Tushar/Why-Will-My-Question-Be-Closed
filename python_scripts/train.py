@@ -7,7 +7,7 @@ import modules
 from transformers import AutoModelForTokenClassification
 from transformers import BertTokenizer, BertModel
 
-title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob+ prefix+ "_title_body_tags.pt"
+title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob + prefix+ "_title_body_tags.pt"
 df = pd.read_csv(dataset_path)
 
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
@@ -17,16 +17,16 @@ logging.info("Done reading list of title_body_tags file : {}".format(title_body_
 
 vocab = torch.load(export_path+prob+prefix+"_vocab.v")
 logging.info("Done reading list of vocab file : {}".format(export_path + prob+prefix+"_vocab.v"))
-logging.info("sequnce length:{}".format(title_body_tags.size(1)))
+logging.info("sequnce length:{}".format(title_body_tags.size(2)))
 
 
 
 # define data set object
-dataset = CustomTextDataset(title_body_tags,df[col].to_numpy())
+dataset = CustomTextDataset(title_body_tags[:,0,:],title_body_tags[:,1,:],df[col].to_numpy())
 train_size = int(0.8 * len(dataset))
 test_size = len(dataset) - train_size
 train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))
-modules.sequence_length = title_body_tags.size(1)
+modules.sequence_length = title_body_tags.size(2)
 
 # Initialize network (try out just using simple RNN, or GRU, and then compare with LSTM)
 model = 0
@@ -53,7 +53,10 @@ if model_type == "BERTOverflow":
     bert = AutoModelForTokenClassification.from_pretrained("jeniya/BERTOverflow").to(device)
     model = BERTOverflow(input_size, hidden_size, num_layers, num_classes,bert).to(device)
 
-
+last_epoch = -1
+# prefix = "Epoch_"+str(last_epoch)+"_"
+# model = torch.load(model_path+prefix+model_name)
+# logging.info("model loaded from last checkpoint: {}".format(prefix+model_name))
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
@@ -64,17 +67,23 @@ update_interval = good_update_interval(total_iters=len(train_loader), num_desire
 logging.info("Number of batches: {} and update interval : {}".format(len(train_loader),update_interval))
        
 # Train Network
-for epoch in range(num_epochs):
+for epoch in range(last_epoch+1,num_epochs):
     running_loss = 0.0 
-    for batch_idx, (data, targets) in enumerate(tqdm(train_loader)):
+    for batch_idx, (data,pos,targets) in enumerate(tqdm(train_loader)):
         # Get data to cuda if possible
         if model_type == "BERT":
             data = data[:,:512]
+        
         data = data.to(device=device).squeeze(1)
+        pos = pos.to(device=device)
+        x = torch.cat((data,pos),axis=1)
+        x = x.to(device)
+        
         targets = targets.to(device=device)
+        
 
         # forward
-        scores = model(data)
+        scores = model(x)
         #print(scores.size())
         loss = criterion(scores, targets)
 

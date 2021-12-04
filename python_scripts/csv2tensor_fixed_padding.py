@@ -1,6 +1,9 @@
 from modules import * 
 import CustomTextDataset
 from transformers import AutoTokenizer
+import spacy 
+
+nlp = spacy.load("en_core_web_sm")
 
 dataset_name = 'balanced_'+ prob +'.csv'
 dataset_path = '..' + path_sep + 'Dataset' + path_sep + dataset_name
@@ -13,9 +16,20 @@ logging.info("Done reading dataset csv file : {}".format(dataset_path))
 tz = BertTokenizer.from_pretrained("bert-base-cased") if model_type != "BERTOverflow" else  AutoTokenizer.from_pretrained("jeniya/BERTOverflow")
 def tokenize(df,max_length):
     input_ids = []
-    for sent in tqdm(df):
-        encoded = tz.encode_plus(
-            text=sent,  # the sentence to be encoded
+    df_sen = df['title_body_tags']
+    df_pos = df['pos']
+    for i in tqdm(range(len(df))):
+        
+        encoded_sent = tz.encode_plus(
+            text=df_sen[i],  # the sentence to be encoded
+            add_special_tokens=True,  # Add [CLS] and [SEP]
+            max_length = max_length,  # maximum length of a sentence
+            pad_to_max_length=True,  # Add [PAD]s
+            return_attention_mask = True,  # Generate the attention mask
+            truncation=True
+        )
+        encoded_pos = tz.encode_plus(
+            text=df_pos[i],  # the sentence to be encoded
             add_special_tokens=True,  # Add [CLS] and [SEP]
             max_length = max_length,  # maximum length of a sentence
             pad_to_max_length=True,  # Add [PAD]s
@@ -23,19 +37,22 @@ def tokenize(df,max_length):
             truncation=True
         )
         # Get the input IDs and attention mask in tensor format
-        input_ids.append(encoded['input_ids'])
+        input_ids.append([encoded_sent['input_ids'],encoded_pos['input_ids']])
         
         
     return torch.tensor(input_ids)
         
     
 
-        
-logging.info("Replacing NaNs with empty strings")
-df.replace(np.nan, '', inplace=True)
 
+# logging.info("Replacing NaNs with empty strings")
+# df.replace(np.nan, '', inplace=True)
+
+# df['pos'] = df['title_body_tags'].apply(nlp).apply(lambda doc :  " ". join([token.pos_ for token in doc]))
+
+df = pd.read_csv("modified.csv")
 title_body_tags_max_length = 512 if "BERT" in model_type else 1700
-title_body_tags_list = tokenize(df['title_body_tags'],title_body_tags_max_length)
+title_body_tags_list = tokenize(df,title_body_tags_max_length)
 
 logging.info("Done tokenizing dataset : {}".format(dataset_path))
 
