@@ -3,11 +3,12 @@ from CustomTextDataset import *
 from models.GRU import *
 from models.BERT import *
 from models.BERTOverflow import *
+from models.BERTOverflow_Window import *
 import modules
 from transformers import AutoModelForTokenClassification
 from transformers import BertTokenizer, BertModel
 
-title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob + prefix+ "_title_body_tags.pt"
+title_body_tags_list_path = '/scratch/tusharpk/Dataset' + path_sep + prob+ prefix+ "_title_body_tags.pt"
 df = pd.read_csv(dataset_path)
 
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
@@ -52,6 +53,11 @@ if model_type == "BERT":
 if model_type == "BERTOverflow":
     bert = AutoModelForTokenClassification.from_pretrained("jeniya/BERTOverflow").to(device)
     model = BERTOverflow(input_size, hidden_size, num_layers, num_classes,bert).to(device)
+
+if model_type == "BERTOverflow_Window":
+    bert = AutoModelForTokenClassification.from_pretrained("jeniya/BERTOverflow").to(device)
+    model = BERTOverflow_Window(input_size, hidden_size, num_layers, num_classes,bert).to(device)
+
 
 last_epoch = -1
 # prefix = "Epoch_"+str(last_epoch)+"_"
