@@ -8,7 +8,6 @@ from torchmetrics import F1
 from torchmetrics import Recall
 
 kfold = 1
-export_path = '..' + path_sep + 'Dataset' + path_sep 
 export_path = (export_path + "kfold" + path_sep) if kfold > 1 else export_path
 
 

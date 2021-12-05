@@ -4,7 +4,7 @@ from models.GRU import *
 import modules
 from sklearn.model_selection import StratifiedKFold
 
-title_body_tags_list_path = '..' + path_sep + 'Dataset' + path_sep + prob+ prefix+"_title_body_tags.pt"
+title_body_tags_list_path = '/scratch/tusharpk/Dataset' + path_sep + prob+ prefix+ "_title_body_tags.pt"
 df = pd.read_csv(dataset_path)
 
 logging.info("Done reading dataset csv file : {}".format(dataset_path))
