@@ -24,7 +24,7 @@ logging.info("sequnce length:{}".format(title_body_tags.size(1)))
 
 # define data set object
 dataset = CustomTextDataset(title_body_tags,df[col].to_numpy())
-train_size = int(0.8 * len(dataset))
+train_size = int(0.5 * len(dataset))
 test_size = len(dataset) - train_size
 train_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, test_size], generator=torch.Generator().manual_seed(seed_val))
 modules.sequence_length = title_body_tags.size(1)
@@ -103,7 +103,7 @@ for epoch in range(last_epoch+1,num_epochs):
         
         # gradient descent update step/adam step
         optimizer.step()
-    prefix = "Epoch_"+str(epoch)+"_"
+    prefix = "Epoch_"+str(epoch)+"_distil_last_"
     torch.save(model,model_path+prefix+model_name)
     logging.info("model saved!: {}".format(prefix+model_name))
 
