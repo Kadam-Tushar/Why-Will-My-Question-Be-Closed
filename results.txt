@@ -59,7 +59,6 @@ GRU - Multi-class Retrained on balanced set :
   pre_mac: 42.36273956298828 
  f1_mic: 41.05850601196289 f1_mac: 37.070167541503906
 
-
 BERTOverflow_POS Multi-class: 
 acc: 39.329673767089844 
 rec_mic: 39.329673767089844 
@@ -67,3 +66,89 @@ rec_mac: 39.17381286621094
 pre_mic: 39.329673767089844 
 pre_mac: 39.25950622558594 
 f1_mic: 39.32967758178711 f1_mac: 36.195152282714844
+
+Multi-class classification problem: 
+KNN performance over GRU word embeddings :
+accuracy:  0.5380572587709188
+f1 macro:  0.529821221886155
+f1 micro:  0.5380572587709188
+recall macro:  0.536143031755987
+recall micro:  0.5380572587709188
+precision macro:  0.536143031755987
+recall micro:  0.5380572587709188
+
+(Binary classification)
+KNN performance over GRU word embeddings :
+accuracy:  0.7604698961024268
+f1 macro:  0.760431658853298
+f1 micro:  0.7604698961024268
+recall macro:  0.7605002679621923
+recall micro:  0.7604698961024268
+precision macro:  0.7605002679621923
+recall micro:  0.7604698961024268
+
+
+(Binary classification)
+Random forest performance over GRU word embeddings :
+accuracy:  0.7658439085097958
+f1 macro:  0.76582651938514
+f1 micro:  0.7658439085097958
+recall macro:  0.7658657468598816
+recall micro:  0.7658439085097958
+precision macro:  0.7658657468598816
+recall micro:  0.7658439085097958
+
+
+(Multi-class classifcation)
+Random forest performance over GRU word embeddings :
+accuracy:  0.5785348762159421
+f1 macro:  0.5738015453901936
+f1 micro:  0.5785348762159421
+recall macro:  0.5769526151374171
+recall micro:  0.5785348762159421
+precision macro:  0.5769526151374171
+recall micro:  0.5785348762159421
+
+
+(Multi-classifcation)
+Logistic regression performance over GRU word embeddings :
+accuracy:  0.45143146927297034
+f1 macro:  0.43279624551378176
+f1 micro:  0.45143146927297034
+recall macro:  0.44871355186219786
+recall micro:  0.45143146927297034
+precision macro:  0.44871355186219786
+recall micro:  0.45143146927297034
+
+(Binary Classification)
+Logistic regression performance over GRU word embeddings :
+accuracy:  0.7559349838779628
+f1 macro:  0.7556267413635487
+f1 micro:  0.7559349838779628
+recall macro:  0.7560140911192059
+recall micro:  0.7559349838779628
+precision macro:  0.7560140911192059
+recall micro:  0.7559349838779628
+
+
+Binary Classifcation 
+SVC  performance over GRU word embeddings :
+accuracy:  0.759055682311014
+f1 macro:  0.7588361695622508
+f1 micro:  0.759055682311014
+recall macro:  0.759123413265171
+recall micro:  0.759055682311014
+precision macro:  0.759123413265171
+recall micro:  0.759055682311014
+
+Multiclasss classifcation
+SVC  performance over GRU word embeddings :
+accuracy:  0.5459868148079848
+f1 macro:  0.539775985503554
+f1 micro:  0.5459868148079848
+recall macro:  0.5440432128041431
+recall micro:  0.5459868148079848
+precision macro:  0.5440432128041431
+recall micro:  0.5459868148079848
+
+

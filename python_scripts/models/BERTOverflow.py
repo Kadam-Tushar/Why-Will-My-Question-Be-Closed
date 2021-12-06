@@ -17,11 +17,8 @@ class BERTOverflow(nn.Module):
     def forward(self, x):
         # Set initial hidden and cell states
         with torch.no_grad():
-            x= self.bert(x[:,:512],output_hidden_states=True)[1][-2]
-            
+            x = self.bert(x[:,:512],output_hidden_states=True)[1][-2]
         x = x.to(device)
-
-
          
         h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device)
 

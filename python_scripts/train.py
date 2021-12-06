@@ -71,7 +71,7 @@ train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=
 test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=True)
 update_interval = good_update_interval(total_iters=len(train_loader), num_desired_updates=10)
 logging.info("Number of batches: {} and update interval : {}".format(len(train_loader),update_interval))
-       
+
 # Train Network
 for epoch in range(last_epoch+1,num_epochs):
     running_loss = 0.0 
@@ -81,7 +81,6 @@ for epoch in range(last_epoch+1,num_epochs):
             data = data[:,:512]
         
         data = data.to(device=device).squeeze(1)
-       
         x = data.to(device)
         
         targets = targets.to(device=device)
@@ -89,6 +88,7 @@ for epoch in range(last_epoch+1,num_epochs):
 
         # forward
         scores = model(x)
+        
         #print(scores.size())
         loss = criterion(scores, targets)
 
