@@ -122,3 +122,26 @@ recall macro:  0.7560140911192059
 recall micro:  0.7559349838779628
 precision macro:  0.7560140911192059
 recall micro:  0.7559349838779628
+
+
+Binary Classifcation 
+SVC  performance over GRU word embeddings :
+accuracy:  0.759055682311014
+f1 macro:  0.7588361695622508
+f1 micro:  0.759055682311014
+recall macro:  0.759123413265171
+recall micro:  0.759055682311014
+precision macro:  0.759123413265171
+recall micro:  0.759055682311014
+
+Multiclasss classifcation
+SVC  performance over GRU word embeddings :
+accuracy:  0.5459868148079848
+f1 macro:  0.539775985503554
+f1 micro:  0.5459868148079848
+recall macro:  0.5440432128041431
+recall micro:  0.5459868148079848
+precision macro:  0.5440432128041431
+recall micro:  0.5459868148079848
+
+
