@@ -15,11 +15,17 @@ Hence we can see [such](https://meta.stackoverflow.com/questions/388076/is-this-
 
 ![img](Report/frustration.png)
 
-### About this work: 
+## About this work: 
 - Implemented a practical tool capable of **pre-evaluating** the questions to be posted on SO, and determining whether the question will be marked for closure by the community **after submission**.
 - Classifier models for binary classification of whether question will be closed in futre and classfiying exact reason for closing a question. 
 
-### Contributions of this work: 
+## Model Architecture: 
+<p align="center">
+  <img src="https://i.ibb.co/bzBN7X4/Screenshot-2022-02-09-at-7-40-17-AM.png" />
+</p>
+[Credits](https://ieeexplore.ieee.org/document/9397539)
+
+## Contributions of this work: 
 - Classifiers relying exclusively on the textual properties of a question: its title, body without using any post-submission information, such as number of answers, scores, or user reputation.
 - Predicting the exact closing reason of a question. 
 - 5% increase in accuracy of binary classification (Open/Closed questions) and 10% increase in accuracy of  multi-class classification problem (Reason for closing question) over performances mentioned in paper. 
