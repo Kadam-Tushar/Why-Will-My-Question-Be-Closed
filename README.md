@@ -21,9 +21,11 @@ Hence we can see [such](https://meta.stackoverflow.com/questions/388076/is-this-
 
 ## Model Architecture: 
 <p align="center">
-  <img src="https://i.ibb.co/bzBN7X4/Screenshot-2022-02-09-at-7-40-17-AM.png" />
+  <img src="https://i.ibb.co/bzBN7X4/Screenshot-2022-02-09-at-7-40-17-AM.png"/> <br>
+  <a href="https://ieeexplore.ieee.org/document/9397539">Image Credits</a>
 </p>
-[Credits](https://ieeexplore.ieee.org/document/9397539)
+
+
 
 ## Contributions of this work: 
 - Classifiers relying exclusively on the textual properties of a question: its title, body without using any post-submission information, such as number of answers, scores, or user reputation.
